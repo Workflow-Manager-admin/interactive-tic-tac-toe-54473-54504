@@ -4,7 +4,7 @@
   --ttt-primary: #1e90ff;
   --ttt-accent: #ff5252;
   --ttt-secondary: #e0e0e0;
-  --bg-primary: #ffffff;
+  --bg-primary: #ff0000; /* Changed background to solid red */
   --text-primary: #222;
   --border-color: var(--ttt-secondary);
   --button-bg: var(--ttt-primary);
