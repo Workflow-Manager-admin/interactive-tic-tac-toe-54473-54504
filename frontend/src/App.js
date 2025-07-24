@@ -84,14 +84,17 @@ function App() {
 
   // Set up the color palette via CSS variables (override template colors)
   useEffect(() => {
-    document.documentElement.style.setProperty('--ttt-primary', '#1e90ff');   // blue
-    document.documentElement.style.setProperty('--ttt-accent', '#ff5252');    // bright red
-    document.documentElement.style.setProperty('--ttt-secondary', '#e0e0e0'); // light gray
-    document.documentElement.style.setProperty('--button-bg', '#1e90ff');
-    document.documentElement.style.setProperty('--button-text', '#ffffff');
-    document.documentElement.style.setProperty('--bg-primary', '#ffffff');
-    document.documentElement.style.setProperty('--text-primary', '#222');
-    document.documentElement.style.setProperty('--border-color', 'var(--ttt-secondary)');
+    // Set a fully red theme using only shades of red for all variables:
+    document.documentElement.style.setProperty('--ttt-primary', '#b71c1c');      // Deep strong red for primaries (X/labels)
+    document.documentElement.style.setProperty('--ttt-accent', '#ff5252');       // Bright accent red (O/winner backgrounds)
+    document.documentElement.style.setProperty('--ttt-secondary', '#ff8a80');    // Soft red (board hover secondary)
+    document.documentElement.style.setProperty('--button-bg', '#ff5252');
+    document.documentElement.style.setProperty('--button-bg-hover', '#b71c1c');
+    document.documentElement.style.setProperty('--button-text', '#fff');
+    document.documentElement.style.setProperty('--bg-primary', '#fff5f5');
+    document.documentElement.style.setProperty('--text-primary', '#b71c1c');
+    document.documentElement.style.setProperty('--text-accent', '#ff5252');
+    document.documentElement.style.setProperty('--border-color', '#ff8a80');
   }, []);
 
   useEffect(() => {
@@ -138,14 +141,25 @@ function App() {
   if (winnerInfo.winner) {
     status = (
       <span>
-        <span style={{ color: 'var(--ttt-accent)', fontWeight: 600 }}>
+        <span style={{
+          color: "var(--ttt-accent)",
+          fontWeight: 700,
+          textShadow: '0 1px 6px #ffd6d6'
+        }}>
           {winnerInfo.winner}
         </span>{" "}
         wins!
       </span>
     );
   } else if (gameOver && moveCount === 9) {
-    status = <span style={{ color: 'grey' }}>Draw!</span>;
+    status = (
+      <span style={{
+        color: "#c62828",
+        textShadow: "0 2px 6px #fff3f3"
+      }}>
+        Draw!
+      </span>
+    );
   } else {
     status = (
       <span>
@@ -153,7 +167,8 @@ function App() {
         <span
           style={{
             color: xIsNext ? 'var(--ttt-primary)' : 'var(--ttt-accent)',
-            fontWeight: 500
+            fontWeight: 600,
+            textShadow: "0 1px 8px #fff0f0"
           }}
         >
           {xIsNext ? 'X' : 'O'}
@@ -170,6 +185,7 @@ function App() {
           marginBottom: '8px',
           fontWeight: 700,
           fontSize: '2.4rem',
+          textShadow: '0 2px 6px #ffeaea'
         }}>
           Tic Tac Toe
         </h1>
