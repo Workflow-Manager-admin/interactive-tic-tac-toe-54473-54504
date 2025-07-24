@@ -1,5 +1,6 @@
 /* CSS Variables for Theme Management */
 :root {
+<<<<<<< HEAD
   /* Red-themed Tic Tac Toe palette */
   --ttt-primary: #b71c1c;      /* Deep strong red for primaries */
   --ttt-accent: #ff5252;       /* Bright accent red, for highlight */
@@ -12,24 +13,62 @@
   --button-bg: #ff5252;        /* Bright button base */
   --button-bg-hover: #b71c1c;  /* Darker red on hover */
   --button-text: #fff;
+=======
+  /* Light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #282c34;
+  --text-secondary: #61dafb;
+  --border-color: #e9ecef;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+>>>>>>> parent of c6fa5c3 (CheckPoint - cg4db7c766)
 }
-
-/* Theme toggler, logo, and original App header from template omitted for lightness */
 
 [data-theme="dark"] {
-  /* Dark theme colors - not used for this minimal demo */
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #282c34;
+  --text-primary: #ffffff;
+  --text-secondary: #61dafb;
+  --border-color: #404040;
+  --button-bg: #0056b3;
+  --button-text: #ffffff;
 }
 
-/* -- MINIMAL TTT GAME STYLES -- */
-.ttt-main-centered {
+.App {
+  text-align: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  box-sizing: border-box;
+  font-size: calc(10px + 2vmin);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+  position: relative;
 }
 
+<<<<<<< HEAD
 .ttt-title {
   margin: 0 0 1rem 0;
   font-size: 2.3rem;
@@ -113,16 +152,26 @@
 
 .ttt-reset-btn {
   background: var(--button-bg);
+=======
+.App-link {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--button-bg);
+>>>>>>> parent of c6fa5c3 (CheckPoint - cg4db7c766)
   color: var(--button-text);
   border: none;
-  font-weight: 600;
   border-radius: 8px;
-  font-size: 1rem;
-  min-width: 120px;
-  padding: 0.5em 1.5em;
-  margin-top: 6px;
-  margin-bottom: 0.7rem;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+<<<<<<< HEAD
   box-shadow: 0 2px 6px #ffbcbc;
   transition: background 0.18s, opacity 0.13s;
   outline: none;
@@ -139,12 +188,27 @@
 .ttt-minor {
   color: #b71c1c99;
   font-size: 0.92rem;
+=======
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 600px) {
-  .ttt-main-centered {
-    padding: 0.3em;
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+>>>>>>> parent of c6fa5c3 (CheckPoint - cg4db7c766)
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
+<<<<<<< HEAD
   .ttt-board { 
     margin-bottom: 12px;
   }
@@ -166,6 +230,19 @@
     width: 44px;
     height: 44px;
     font-size: 1.28rem;
+=======
+  to {
+    transform: rotate(360deg);
+>>>>>>> parent of c6fa5c3 (CheckPoint - cg4db7c766)
   }
 }
 
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}

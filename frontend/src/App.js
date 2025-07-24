@@ -1,89 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import logo from './logo.svg';
 import './App.css';
-
-// Minimal color palette as CSS variables (light theme)
-//  primary: #1e90ff  | accent: #ff5252 | secondary: #e0e0e0
-
-// Utility function for calculating if there's a winner
-function calculateWinner(squares) {
-  // All winning patterns
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  for (let i=0; i<lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (
-      squares[a] && 
-      squares[a] === squares[b] && 
-      squares[a] === squares[c]
-    ) {
-      return squares[a];
-    }
-  }
-  return null;
-}
-
-// PUBLIC_INTERFACE
-function Square({ value, onClick, highlight }) {
-  /** A single clickable tic tac toe square. */
-  return (
-    <button
-      className="ttt-square"
-      onClick={onClick}
-      style={highlight ? { background: 'var(--ttt-accent)' } : undefined}
-      aria-label={value ? `Square with ${value}` : "Empty square"}
-    >
-      {value}
-    </button>
-  );
-}
-
-// PUBLIC_INTERFACE
-function Board({ squares, onSquareClick, winningLine }) {
-  /** The 3x3 tic tac toe board. */
-  function renderSquare(i) {
-    const isHighlight = winningLine ? winningLine.includes(i) : false;
-    return (
-      <Square
-        key={i}
-        value={squares[i]}
-        onClick={() => onSquareClick(i)}
-        highlight={isHighlight}
-      />
-    );
-  }
-  // Render 3 rows
-  return (
-    <div className="ttt-board">
-      {[0, 1, 2].map(row =>
-        <div key={row} className="ttt-board-row">
-          {[0, 1, 2].map(col => renderSquare(3 * row + col))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // PUBLIC_INTERFACE
 function App() {
-  /**
-   * Main Tic Tac Toe app component.
-   */
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-  const [gameOver, setGameOver] = useState(false);
-  const [winnerInfo, setWinnerInfo] = useState({ winner: null, line: null });
-  const [moveCount, setMoveCount] = useState(0);
+  const [theme, setTheme] = useState('light');
 
-  // Set up the color palette via CSS variables (override template colors)
+  // Effect to apply theme to document element
   useEffect(() => {
+<<<<<<< HEAD
     // Set a fully red theme using only shades of red for all variables:
     document.documentElement.style.setProperty('--ttt-primary', '#b71c1c');      // Deep strong red for primaries (X/labels)
     document.documentElement.style.setProperty('--ttt-accent', '#ff5252');       // Bright accent red (O/winner backgrounds)
@@ -201,15 +126,42 @@ function App() {
           className="ttt-reset-btn"
           onClick={handleRestart}
           aria-label="Restart game"
+=======
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  // PUBLIC_INTERFACE
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <button 
+          className="theme-toggle" 
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+>>>>>>> parent of c6fa5c3 (CheckPoint - cg4db7c766)
         >
-          Restart
+          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
         </button>
-        <div className="ttt-infobar">
-          <span className="ttt-minor">
-            Two player (local device). Minimal demo build. 
-          </span>
-        </div>
-      </main>
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <p>
+          Current theme: <strong>{theme}</strong>
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
